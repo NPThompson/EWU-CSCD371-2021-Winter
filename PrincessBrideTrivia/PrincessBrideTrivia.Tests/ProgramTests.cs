@@ -7,6 +7,24 @@ namespace PrincessBrideTrivia.Tests
     public class ProgramTests
     {
         [TestMethod]
+        public void LoadQuestions_AllocatesQuestionArray()
+        {
+            string filePath = Path.GetRandomFileName();
+            try
+            {
+                GenerateQuestionsFile(filePath, 2);
+
+                Question[] questions = Program.LoadQuestions(filePath);
+
+                Assert.IsNotNull(questions[1]);
+            }
+            finally
+            {
+                File.Delete(filePath);
+            }
+        }
+
+        [TestMethod]
         public void LoadQuestions_RetrievesQuestionsFromFile()
         {
             string filePath = Path.GetRandomFileName();
