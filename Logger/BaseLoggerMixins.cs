@@ -6,6 +6,9 @@
         {
             if(logger == null)
             throw new System.ArgumentNullException();
+
+            //log level 1 is error
+            logger.Log(LogLevel.Error, message);
         }
 
         //Allows one to write: MyLogger.Error("Some message {0} {1}", 12345, 67890 );
