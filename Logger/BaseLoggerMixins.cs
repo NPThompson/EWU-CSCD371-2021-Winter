@@ -18,14 +18,17 @@
 
          public static void Information(this BaseLogger logger, string formatMessage, params object[] insertIntoMessage)
         {
+             logger.Log(LogLevel.Information, string.Format(formatMessage, insertIntoMessage));
         }
 
          public static void Warning(this BaseLogger logger, string formatMessage, params object[] insertIntoMessage)
         {
+             logger.Log(LogLevel.Warning, string.Format(formatMessage, insertIntoMessage));
         }
 
          public static void Debug(this BaseLogger logger, string formatMessage, params object[] insertIntoMessage)
         {
+             logger.Log(LogLevel.Debug, string.Format(formatMessage, insertIntoMessage));
         }
     }
 }
