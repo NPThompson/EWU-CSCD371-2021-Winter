@@ -7,7 +7,6 @@
             if(logger == null)
             throw new System.ArgumentNullException();
 
-            //log level 1 is error
             logger.Log(LogLevel.Error, message);
         }
 

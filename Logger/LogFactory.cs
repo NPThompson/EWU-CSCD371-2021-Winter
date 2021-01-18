@@ -4,8 +4,14 @@
     {
         public BaseLogger CreateLogger(string className)
         {
-            
-            return null;
+            switch(className)
+            {
+                case "FileLogger":
+                    return new FileLogger{ name = className };
+                break;
+
+                default: return null;
+            }
         }
     }
 }
