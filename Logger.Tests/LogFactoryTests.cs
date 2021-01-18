@@ -16,6 +16,14 @@ namespace Logger.Tests
                   
          // Test
          Assert.AreEqual(myLogger.name, "FileLogger");
-        }   
+        }
+
+        [TestMethod]
+        public void LogFactory_ReturnsNull_IfFileLoggerNotConfigured()
+        {
+            FileLogger myLogger = (FileLogger)(new LogFactory()).CreateLogger("FileLogger");
+
+            Assert.IsNull(myLogger);
+        }
     }
 }
