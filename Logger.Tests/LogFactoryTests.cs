@@ -10,9 +10,10 @@ namespace Logger.Tests
         public void LogFactory_SetsClassName()
         {
          // Arrange
-         FileLogger myLogger = (FileLogger)(new LogFactory()).CreateLogger("FileLogger");
+         LogFactory myLogFactory = new LogFactory();
+         myLogFactory.configureFileLogger("foobar");
 
-         // Act
+         FileLogger myLogger = (FileLogger)myLogFactory.CreateLogger("FileLogger");
                   
          // Test
          Assert.AreEqual(myLogger.name, "FileLogger");
