@@ -9,17 +9,11 @@
             _fileLoggerFilePath = filePath;
         }
 
-        public BaseLogger CreateLogger(string className)
+        public BaseLogger CreateLogger(string initClassName)
         {
-            switch(className)
-            {
-                case "FileLogger":
-                    if(_fileLoggerFilePath == null)
-                        return null;
-                    return new FileLogger{ name = className, filePath = _fileLoggerFilePath };
-                break;
-            }
-            return null;
+            if(_fileLoggerFilePath == null)
+                return null;
+            else return new FileLogger{ className = initClassName, filePath = _fileLoggerFilePath };      
         }
     }
 }

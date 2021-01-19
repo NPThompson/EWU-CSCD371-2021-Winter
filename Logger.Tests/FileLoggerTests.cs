@@ -18,7 +18,7 @@ namespace Logger.Tests
             LogFactory logFactory = new LogFactory();
             logFactory.configureFileLogger("fileLoggerTest.txt");
 
-            FileLogger fileLogger = (FileLogger)logFactory.CreateLogger("FileLogger");
+            FileLogger fileLogger = (FileLogger)logFactory.CreateLogger(nameof(FileLoggerTests));
 
             fileLogger.Log(LogLevel.Warning, message1);
             fileLogger.Log(LogLevel.Warning, message2);
@@ -28,8 +28,8 @@ namespace Logger.Tests
             var line2 = testFileLoggerReader.ReadLine();
             testFileLoggerReader.Close();
             
-            Assert.AreEqual(line1, $"{System.DateTime.Now.ToString("HH:mm:ss MM/dd/yyyy")} {LogLevel.Warning} {message1}");
-            Assert.AreEqual(line2, $"{System.DateTime.Now.ToString("HH:mm:ss MM/dd/yyyy")} {LogLevel.Warning} {message2}");
+            Assert.AreEqual(line1, $"{System.DateTime.Now.ToString("HH:mm:ss MM/dd/yyyy")} FileLoggerTests {LogLevel.Warning} {message1}");
+            Assert.AreEqual(line2, $"{System.DateTime.Now.ToString("HH:mm:ss MM/dd/yyyy")} FileLoggerTests {LogLevel.Warning} {message2}");
           }
     }
 }

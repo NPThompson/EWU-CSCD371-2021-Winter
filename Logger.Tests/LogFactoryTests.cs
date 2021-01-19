@@ -13,10 +13,10 @@ namespace Logger.Tests
          LogFactory myLogFactory = new LogFactory();
          myLogFactory.configureFileLogger("foobar");
 
-         FileLogger myLogger = (FileLogger)myLogFactory.CreateLogger("FileLogger");
+         FileLogger myLogger = (FileLogger)myLogFactory.CreateLogger(nameof(LogFactoryTests));
                   
          // Test
-         Assert.AreEqual(myLogger.name, "FileLogger");
+         Assert.AreEqual(myLogger.className, nameof(LogFactoryTests));
         }
 
         [TestMethod]
