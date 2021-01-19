@@ -16,7 +16,7 @@
                 case "FileLogger":
                     if(_fileLoggerFilePath == null)
                         return null;
-                    return new FileLogger{ name = className };
+                    return new FileLogger{ name = className, filePath = _fileLoggerFilePath };
                 break;
             }
             return null;

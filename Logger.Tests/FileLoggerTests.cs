@@ -20,11 +20,11 @@ namespace Logger.Tests
             fileLogger.Log(LogLevel.Warning, "What is the average air speed velocity of an unladen swallow?");
             fileLogger.Log(LogLevel.Warning, "African or European?");
 
-            // fileLogger must create file to log to
             StreamReader testFileLoggerReader = new StreamReader("fileLoggerTest.txt");
             var lastLoggedMessage = testFileLoggerReader.ReadLine();
-
-            //because the time changes so quickly, we chop off the first 8 characters (hh:mm:ss)
+            testFileLoggerReader.Close();
+            
+            // because the time changes so quickly, we chop off the first 8 characters (hh:mm:ss)
             lastLoggedMessage = lastLoggedMessage.Substring(8, lastLoggedMessage.Length-1);
             System.Console.WriteLine(lastLoggedMessage);
 
