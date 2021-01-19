@@ -8,9 +8,9 @@ namespace Logger
 
         public override void Log(LogLevel logLevel, string message)
         {
-            if(!File.Exists(filePath))
-               File.Create(filePath).Close(); //Create returns a FileStream, which I want to immediately close so that other processes can also get at the file
-
+            StreamWriter LogFile = File.AppendText(filePath);
+            LogFile.WriteLine($"{System.DateTime.Now.ToString("HH:mm:ss MM/dd/yyyy")} {logLevel} {message}");
+            LogFile.Close();
         }
     }
 }

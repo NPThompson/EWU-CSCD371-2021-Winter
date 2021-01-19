@@ -9,6 +9,9 @@ namespace Logger.Tests
         [TestMethod]
         public void FileLogger_AppendsLogsToFile()
         {
+            string message1 = "What is the average air speed velocity of an unladen swallow?";
+            string message2 = "African or European?";
+
             if(File.Exists("fileLoggerTest.txt"))
                 File.Delete("fileLoggerTest.txt");
         
@@ -17,18 +20,16 @@ namespace Logger.Tests
 
             FileLogger fileLogger = (FileLogger)logFactory.CreateLogger("FileLogger");
 
-            fileLogger.Log(LogLevel.Warning, "What is the average air speed velocity of an unladen swallow?");
-            fileLogger.Log(LogLevel.Warning, "African or European?");
+            fileLogger.Log(LogLevel.Warning, message1);
+            fileLogger.Log(LogLevel.Warning, message2);
 
             StreamReader testFileLoggerReader = new StreamReader("fileLoggerTest.txt");
-            var lastLoggedMessage = testFileLoggerReader.ReadLine();
+            var line1 = testFileLoggerReader.ReadLine();
+            var line2 = testFileLoggerReader.ReadLine();
             testFileLoggerReader.Close();
             
-            // because the time changes so quickly, we chop off the first 8 characters (hh:mm:ss)
-            lastLoggedMessage = lastLoggedMessage.Substring(8, lastLoggedMessage.Length-1);
-            System.Console.WriteLine(lastLoggedMessage);
-
-            Assert.AreEqual(lastLoggedMessage, "My Friends Call me Tim");
-        }
+            Assert.AreEqual(line1, $"{System.DateTime.Now.ToString("HH:mm:ss MM/dd/yyyy")} {LogLevel.Warning} {message1}");
+            Assert.AreEqual(line2, $"{System.DateTime.Now.ToString("HH:mm:ss MM/dd/yyyy")} {LogLevel.Warning} {message2}");
+          }
     }
 }
