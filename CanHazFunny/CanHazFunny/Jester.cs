@@ -4,8 +4,11 @@ namespace CanHazFunny
 {
 	public class Jester : IJokeService, IJokeOutput
 	{
-		public Jester()
+		private IJokeService jokeService { get => jokeService; set => jokeService = value ?? throw new ArgumentNullException();  } 
+
+		public Jester(IJokeService jokeService)
 		{
+			this.jokeService = jokeService;
 		}
 
 		public string GetJoke()
