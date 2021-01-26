@@ -15,7 +15,12 @@ namespace CanHazFunny
 
 		public string GetJoke()
         {
-			return "";
+			string joke;
+			do
+			{
+				joke = jokeService.GetJoke();
+			} while (joke.Contains("chuck norris"));
+			return joke;
         }
 
 		public void outputJoke(string joke)
