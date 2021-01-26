@@ -4,8 +4,10 @@ namespace CanHazFunny
 {
 	public class Jester : IJokeService, IJokeOutput
 	{
-		private IJokeService jokeService { get => jokeService; set => jokeService = value ?? throw new ArgumentNullException();  } 
-
+		// redundant _jokeService field, but else leads to infinite regress
+		private IJokeService _jokeService;
+		private IJokeService jokeService { get => _jokeService; set => _jokeService = value ?? throw new ArgumentNullException();  } 
+		
 		public Jester(IJokeService jokeService)
 		{
 			this.jokeService = jokeService;
