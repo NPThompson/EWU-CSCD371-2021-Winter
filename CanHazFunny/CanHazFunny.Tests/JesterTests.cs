@@ -12,5 +12,14 @@ namespace CanHazFunny.Tests
         {
             Jester jester = new(null!);
         }
+
+    [TestMethod]
+     public void Jester_FiltersChuckNorrisJokes()
+        {
+            Mock<IJokeService> testService = new();
+            Jester jester = new(testService.Object);
+
+            Assert.Fail("Test service should send chuck norris jokes first, then regular ones");
+        }
     }
 }
