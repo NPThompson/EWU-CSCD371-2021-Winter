@@ -22,7 +22,7 @@ namespace CanHazFunny
 			do
 			{
 				joke = jokeService.GetJoke();
-			} while (joke.Contains("chuck norris"));
+			} while (joke.ToLower().Contains("chuck norris"));
 			return joke;
         }
 
