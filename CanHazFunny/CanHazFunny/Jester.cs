@@ -6,10 +6,13 @@ namespace CanHazFunny
 	{
 		// redundant _jokeService field, but else leads to infinite regress
 		private IJokeService _jokeService;
-		private IJokeService jokeService { get => _jokeService; set => _jokeService = value ?? throw new ArgumentNullException();  } 
-		
-		public Jester(IJokeService jokeService)
+		private IJokeService jokeService { get => _jokeService; set => _jokeService = value ?? throw new ArgumentNullException();  }
+	
+		private IJokeOutput _jokeOutput;
+		private IJokeOutput jokeOutput { get => _jokeOutput; set => _jokeOutput = value ?? throw new ArgumentNullException(); }
+		public Jester(IJokeOutput jokeOutput, IJokeService jokeService)
 		{
+			this.jokeOutput = jokeOutput;
 			this.jokeService = jokeService;
 		}
 
@@ -25,7 +28,12 @@ namespace CanHazFunny
 
 		public void outputJoke(string joke)
         {
+			Console.WriteLine(joke);
+        }
 
+		public void tellJoke()
+        {
+			outputJoke(GetJoke());
         }
 	}
 }
