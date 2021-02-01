@@ -99,5 +99,14 @@ namespace SetLibrary.Tests
             Assert.IsTrue(Array.Exists(elements, element => element == 9));
             Assert.IsTrue(Array.Exists(elements, element => element == 9));
         }
+
+        [TestMethod]
+        public void NumSet_ModifyingArray_DoesNotModifySet()
+        {
+            NumSet set1 = new(11, 13, 17);
+            int[] elements = set1.GetElements();
+            elements[0] = 19;
+            Assert.IsFalse(set1.Contains(19));
+        }
     }
 }
