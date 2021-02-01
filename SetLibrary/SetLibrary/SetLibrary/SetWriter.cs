@@ -1,14 +1,24 @@
 ﻿using System;
+using StreamWriter = System.IO.StreamWriter;
+
+
 
 namespace SetLibrary.Serialize
 {
 	public class SetWriter : IDisposable
 	{
         private bool disposedValue;
+        StreamWriter streamWriter;        
 
-        public SetWriter()
+        public SetWriter(string filePath)
 		{
+            streamWriter = new(filePath);
 		}
+
+        public void Serialize(NumSet set)
+        {
+
+        }
 
         protected virtual void Dispose(bool disposing)
         {
@@ -17,6 +27,7 @@ namespace SetLibrary.Serialize
                 if (disposing)
                 {
                     // TODO: dispose managed state (managed objects)
+                    streamWriter.Close();
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override finalizer
