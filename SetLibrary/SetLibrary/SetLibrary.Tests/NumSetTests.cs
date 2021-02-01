@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SetLibrary.Tests
 {
@@ -7,8 +6,9 @@ namespace SetLibrary.Tests
     public class NumSetTests
     {
         [TestMethod]
-        public void foo()
-        {
+        public void NumSet_Constructor_AcceptsParamList()
+        { 
+           NumSet numSet = new(0, 1, 2, 3, 4, 5);
         }
     }
 }
