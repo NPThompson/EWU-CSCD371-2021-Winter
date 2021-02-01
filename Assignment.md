@@ -1,14 +1,14 @@
-﻿# Reading Assignment
-Chapters 10 and 11
-
 # Assignment
+- Both projects created with appropriate properties: ✔❌
+- NumSet constructor accepts variable arguments: ✔❌
+- NumSet ToString implemented correctly: ✔❌
+- NumSet equality operators implemented correctly: ✔❌
+- NumSet fully unit tested: ✔❌
+- SeWriter created in nested namespace: ✔❌ 
+- SeWriter writes set to file: ✔❌ 
+- SeWriter properly implements IDisposable: ✔❌ 
+- SeWriter fully unit tested: ✔❌ 
 
-- `Jester` class takes in the correct interfaces: ✔❌
-- `Jester` dependencies are null checked: ✔❌
-- `Jester` approprietly retrieves jokes and sends them to the output: ✔❌
-- Chuck Norris jokes ge filtered out: ✔❌
-- Jester code coverage is above 90%: ✔❌
-
-### Extra Credit
-- Output to console implementat is unit tested: ✔❌
-- `JokeService` uses JSON: ✔❌
+## Extra Credit
+NumSet contains cast operator that is unit tested: ✔❌
+Projects updated to properly use Directory.Build.props: ✔❌

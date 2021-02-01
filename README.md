@@ -2,26 +2,36 @@
 
 ## See [Docs](Docs)
 
-# Assignment 3
-For this assignment we are going to create a joke generator. For fun we will back it with a real web service that provides jokes. However, Chuck Norris jokes are over-used so we are going to filter those out. The code to retrieve the jokes from the web service is provided for you. 
+# Assignment 4
 
-** Please note ** This is someone else's web service, please be respectful and avoid spamming it. 
+The purpose of this assignment is to write a class library with a generic collection class that supports a set of numbers.
 
-For this assignment do the following:
+## Reading
 
-- Create *two* interfaces. One to represent the `JokeService` and one interface to represent outputting the joke to the screen (`Console.WriteLine`).
-- The `JokeService` will need to have the interface applied to it.
-- Create an implementation of the output interface that writes out the joke to the console.
-- Implement the `Jester` class. It should take in both interfaces as dependencies. These dependencies should be null checked.
-- The `Jester` class `TellJoke()` method should retrieve a joke from the `JokeService`. If the joke contains "Chuck Norris", skip it and get another. The joke should be written to the output dependency.
-- Unit test the Jester class. Code coverage should be above 90% for this class. Moq will make this significantly easier.
+Read through Chapter 12, 13, 15
+
+## Instructions
+- Create both a *class library* project and a unit test project. 
+  - You may pick any reasonable name you want for the project, but unit test project should have a `.Tests` suffix (ie. <ProjectBeingTested>.Tests)
+  - Projects should all target net5.
+  - Ensure you enable nullable reference types, warnings as errors, and enabled .NET analyzers for both projects
+
+- Write an `NumSet` class (not a record) with the following behavior
+  - A constructor that accepts a variable number of integers (params array)
+  - `ToString` method should display all of the numbers in the set.
+  - `Equals`/`GetHashCode` implementation should be based on the integers within the NumSet. Because this is a set, the order of the items should not matter (ie. A set with (1, 2, 3) should equal a set with (3, 2, 1))
+  - Add equality operators (`==` and `!=`) for NumSet
+  - Add a method to return an array with the number from the set. Modifying the returned array should not change the `NumSet` in any way.
+  - Use appropriate access modifiers for all members. Follow the principle of least access; if it doesn't need to be public use a different accessor.
+  - All members should be fully unit tested
+
+- Write a `SetWriter` class this class will be responsible for writing the set to a file.
+  - This class should be in a *nested namespace*
+  - This class should take in a file to write to in its constructor. In the constructor create a [StreamWriter](https://docs.microsoft.com/en-us/dotnet/api/system.io.streamwriter?view=net-5.0) instance to use to write the file.
+  - This class should have a method that writes the values in the set to the file. 
+  - This class should implement `IDispoable` following the [disposable pattern](https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/implementing-dispose). Clean up the StreamWriter instance that was created in the constructor.
+  - This class should be fully unit tested
 
 ## Extra Credit
-- Unit test your implementation that writes the joke out to the screen. How hard could it be to unit test a single line method ;)?
-- The Geek jokes API that is being used can also return jokes in a JSON format. Update the `JokeService` to retrieve jokes using JSON. `GetJoke` should still return a string.
-
-## Additional links
-- [Moq](https://github.com/moq/moq4) for test doubles
-- [coverlet](https://github.com/coverlet-coverage/coverlet#Quick-Start) code coverage tool
-- [Geek jokes API](https://github.com/sameerkumar18/geek-joke-api)
-
+- Write an implicit cast operator to converter `NumSet` a C# array. Ensure null cases are properly handled. This should also be unit tested.
+- The process of constantly setting up your projects with duplicate properties can be simplified by using a [Directory.Build.props file](https://docs.microsoft.com/en-us/visualstudio/msbuild/customize-your-build?view=vs-2019). Implement this in your pull request. Ensure that properties set in that file are not set within the project files.
