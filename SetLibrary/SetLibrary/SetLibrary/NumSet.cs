@@ -12,9 +12,9 @@ namespace SetLibrary
         {
             Elements = new();
 
-            foreach(int i in elements)
+            foreach (int i in elements)
             {
-                if(!Elements.Contains(i))
+                if (!Elements.Contains(i))
                     Elements.AddFirst(i);
             }
         }
@@ -24,7 +24,7 @@ namespace SetLibrary
             return Elements.Contains(element);
         }
 
-        
+
 
         public static bool operator !=(NumSet numSet1, NumSet numSet2)
         {
@@ -53,12 +53,38 @@ namespace SetLibrary
                 if (!other.Contains(i))
                     return false;
 
+            foreach (int j in other.Elements)
+                if (!this.Contains(j))
+                    return false;
+
             return true;
         }
 
         public override int GetHashCode()
         {
-            throw new NotImplementedException();
+            int sum = 97;
+            foreach (int i in Elements)
+                sum += i * 43;
+            return sum;
+        }
+
+        public override string ToString()
+        {
+            string rv = "{";
+            foreach (int i in Elements)
+                rv = rv + i + ", ";
+            return rv + "}";
+        }
+
+        public int[] GetElements()
+        {
+            int[] rv = new int[Elements.Count];
+
+            int index = 0;
+            foreach (int element in Elements)
+                rv[index++] = element;
+
+            return rv;
         }
     }
 }
