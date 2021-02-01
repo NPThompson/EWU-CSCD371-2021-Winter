@@ -10,5 +10,13 @@ namespace SetLibrary.Tests
         { 
            NumSet numSet = new(0, 1, 2, 3, 4, 5);
         }
+
+        [TestMethod]
+        public void NumSet_ContainsMethod_ShowsContainedElement()
+        {
+            NumSet numSet = new(0);
+
+            Assert.IsTrue(numSet.Contains(0));
+        }
     }
 }
