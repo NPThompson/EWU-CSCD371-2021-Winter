@@ -2,8 +2,17 @@
 
 namespace GenericsHomework
 {
-    public class Node
+    public class Node<T>
     {
-        public Node() { }
+        public Node(T init) 
+        {
+            this.data = init;
+            this.next = this;
+        }
+    
+        private T data;
+        private Node<T> next;
+
+      
     }
 }

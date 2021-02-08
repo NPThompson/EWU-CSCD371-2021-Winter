@@ -6,8 +6,9 @@ namespace GenericsHomework.Tests
     public class NodeTests
     {
         [TestMethod]
-        public void FooTest()
+        public void Node_ConstructorIsGeneric()
         {
+            Node<int> intNode = new(10);
         }
     }
 }
