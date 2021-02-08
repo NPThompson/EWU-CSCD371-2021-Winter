@@ -7,12 +7,27 @@ namespace GenericsHomework
         public Node(T init) 
         {
             this.data = init;
-            this.next = this;
+            this.Next = this;
         }
-    
-        private T data;
-        private Node<T> next;
+        
+        public Node()
+        {
+            this.Next = this;
+        }
 
-      
+        public T? data;
+        public Node<T> Next { get; private set; }
+
+
+        public override string ToString()
+        {
+            return this.data?.ToString() ?? "";
+        }
+
+        public void Insert(Node<T> newNext)
+        {
+            this.Next = newNext;
+        }
+
     }
 }
